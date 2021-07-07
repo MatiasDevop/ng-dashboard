@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-  import * as Highcharts from 'highcharts';
+import { Component, Input, OnInit } from '@angular/core';
+import * as Highcharts from 'highcharts';
+import HC_exporting from 'highcharts/modules/exporting';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class AreaComponent implements OnInit {
 
   chartOptions = {};
-
+  @Input() data: any = [];
+  
   Highcharts = Highcharts;
   constructor() { }
 
@@ -18,11 +20,11 @@ export class AreaComponent implements OnInit {
       this.chartOptions =  {
 
         title: {
-            text: 'Solar Employment Growth by Sector, 2010-2016'
+            text: 'Random DATA'
         },
     
         subtitle: {
-            text: 'Source: thesolarfoundation.com'
+            text: 'DEMO'
         },
     
         yAxis: {
@@ -42,7 +44,9 @@ export class AreaComponent implements OnInit {
             align: 'right',
             verticalAlign: 'middle'
         },
-    
+        credits:{
+            enabled: false
+        },
         plotOptions: {
             series: {
                 label: {
@@ -84,7 +88,14 @@ export class AreaComponent implements OnInit {
             }]
         }
     
-    }
+    };
+    HC_exporting(Highcharts);
+
+    setTimeout(() => {
+        window.dispatchEvent(
+            new Event('resize')
+        );
+    }, 300)
   }
 
 }

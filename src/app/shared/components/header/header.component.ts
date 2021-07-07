@@ -16,5 +16,10 @@ export class HeaderComponent implements OnInit {
 
   toogleSideBar(){
     this.toogleSideBarForMe.emit();
+      setTimeout(() => {
+        window.dispatchEvent(
+            new Event('resize')
+        );
+    }, 300)
   }
 }
