@@ -14,9 +14,16 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
+    console.log("initiating Dashboard....");
+    
     this.bigChart = this.dashboardService.bigChart();
-    this.bigChart = this.dashboardService.cards();
+    this.cards = this.dashboardService.cards();
     this.pieChart = this.dashboardService.pieChart();
+    console.log(this.bigChart);
+    console.log(this.cards);
+    console.log(this.pieChart);
+
+    
   }
 
 }
